@@ -11,6 +11,7 @@ export default defineConfig(({ command }) => {
   return {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
+      global: 'window',
     },
     root: 'src',
     build: {
