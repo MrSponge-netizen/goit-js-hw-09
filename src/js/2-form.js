@@ -5,8 +5,11 @@ const form = document.querySelector('.feedback-form');
 
 if (localStorage.getItem(localStorageKey) != null) {
   try {
-    console.log(JSON.parse(localStorage.getItem(localStorageKey)));
+    
     const localformData = JSON.parse(localStorage.getItem(localStorageKey));
+    formData.email = localformData.email;
+    formData.message = localformData.message;
+    
     form.email.value = localformData.email;
     form.message.value = localformData.message;
   } catch (error) {
@@ -28,6 +31,8 @@ form.addEventListener('submit', evt => {
   console.log(formData);
   form.reset();
   localStorage.removeItem(localStorageKey);
+  formData.email = '';
+  formData.message = '';
   return false;
 });
 
